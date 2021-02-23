@@ -9,6 +9,7 @@ async function fetchDataFromBack() {
 
 async function drawGrid() {
   const fetchedData = await fetchDataFromBack();
+
   const header = document.createElement('h1');
   header.innerHTML = 'Car Exhibtion';
 
@@ -17,14 +18,20 @@ async function drawGrid() {
 
   fetchedData.cars.map((car) => {
     const newCar = document.createElement('div');
-    newCar.classList.add('card');
+    newCar.classList.add('card', 'tooltip');
     newCar.innerHTML = `
-      <div class="container">
-      <h4><b>Brand: ${car.make_display}</b></h4>
-      <p>Car id: ${car.make_id}</p>
-      <p>Uniqueness: ${car.make_is_common}</p>
-      <p>Made in: ${car.make_country}</p>
-      </div>`;
+    <div class="container">
+    <h4><b>Brand: ${car.make_display}</b></h4>
+    <p>Car id: ${car.make_id}</p>
+    <p>Uniqueness: ${car.make_is_common}</p>
+    <p>Made in: ${car.make_country}</p>
+    </div>`;
+
+    const tooltip = document.createElement('span');
+    tooltip.classList.add('tooltiptext');
+    tooltip.innerHTML = `This is a nice looking ${car.make_display} from ${car.make_country}`;
+
+    newCar.appendChild(tooltip);
     cardsContainer.append(newCar);
   });
 
