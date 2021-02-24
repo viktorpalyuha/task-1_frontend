@@ -1,3 +1,6 @@
+import '../css/index.css'
+import '../css/responsive.css'
+
 const root = document.querySelector('.root');
 
 async function fetchDataFromBack() {
