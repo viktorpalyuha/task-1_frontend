@@ -10,7 +10,6 @@ import { Game } from '../shared/models/game.model';
 })
 export class GamesComponent implements OnInit {
   public games: Game[];
-  public categories = ['Single-player', 'Online', 'Co-op'];
 
   constructor(
     private gamesService: GamesService,
@@ -24,6 +23,8 @@ export class GamesComponent implements OnInit {
         this.getGamesByName(params.name);
       } else if (params.category) {
         this.getGamesByCategory(params.category);
+      } else if (params.sort) {
+        this.sortGamesByPrice(params.sort);
       } else {
         this.getAllGames();
       }
@@ -34,6 +35,15 @@ export class GamesComponent implements OnInit {
         relativeTo: this.activeRoute,
         queryParams: {
           category,
+        },
+      });
+    });
+
+    this.gamesService.clickedSelectOption.subscribe((sort: string) => {
+      this.router.navigate([], {
+        relativeTo: this.activeRoute,
+        queryParams: {
+          sort,
         },
       });
     });
@@ -59,5 +69,21 @@ export class GamesComponent implements OnInit {
       .subscribe((receivedGames: Game[]) => {
         this.games = receivedGames;
       });
+  }
+
+  sortGamesByPrice(expensiveness: string) {
+    if (expensiveness === 'Cheapest first') {
+      this.gamesService
+        .sortGamesByPrice('low')
+        .subscribe((receivedGames: Game[]) => {
+          this.games = receivedGames;
+        });
+    } else {
+      this.gamesService
+        .sortGamesByPrice('high')
+        .subscribe((receivedGames: Game[]) => {
+          this.games = receivedGames;
+        });
+    }
   }
 }

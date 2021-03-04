@@ -1,0 +1,4 @@
+<select class="select" (change)="onStandardClick($event.target.value)">
+  <option>Standard</option>
+  <option *ngFor="let option of options">{{option}}</option>
+</select>
