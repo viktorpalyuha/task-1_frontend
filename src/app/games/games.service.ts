@@ -12,6 +12,6 @@ export class GamesService {
   }
 
   getGamesByName(name: string) {
-    return this.http.get(`/api/games/game/${name}`);
+    return this.http.get(`/api/games/search/${name}`);
   }
 }
