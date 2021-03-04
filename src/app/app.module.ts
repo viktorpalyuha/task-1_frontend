@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { GamesComponent } from './games/games.component';
 import { GameComponent } from './games/game/game.component';
 import { SearchComponent } from './shared/search/search.component';
+import { PillsComponent } from './shared/pills/pills.component';
+import { PillComponent } from './shared/pills/pill/pill.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { SearchComponent } from './shared/search/search.component';
     GamesComponent,
     GameComponent,
     SearchComponent,
+    PillsComponent,
+    PillComponent,
   ],
   imports: [
     BrowserModule,

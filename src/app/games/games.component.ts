@@ -1,8 +1,8 @@
-import { Game } from '../shared/models/game.model';
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from './games.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
+import { Game } from '../shared/models/game.model';
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
@@ -10,19 +10,32 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GamesComponent implements OnInit {
   public games: Game[];
+  public categories = ['Single-player', 'Online', 'Co-op'];
 
   constructor(
     private gamesService: GamesService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe((params) => {
       if (params.name) {
         this.getGamesByName(params.name);
+      } else if (params.category) {
+        this.getGamesByCategory(params.category);
       } else {
         this.getAllGames();
       }
+    });
+
+    this.gamesService.clickedCategory.subscribe((category: string) => {
+      this.router.navigate([], {
+        relativeTo: this.activeRoute,
+        queryParams: {
+          category,
+        },
+      });
     });
   }
 
@@ -32,9 +45,17 @@ export class GamesComponent implements OnInit {
     });
   }
 
-  getGamesByName(name: string) {
+  getGamesByName(name: string): void {
     this.gamesService
       .getGamesByName(name)
+      .subscribe((receivedGames: Game[]) => {
+        this.games = receivedGames;
+      });
+  }
+
+  getGamesByCategory(category: string): void {
+    this.gamesService
+      .getGamesByCategory(category)
       .subscribe((receivedGames: Game[]) => {
         this.games = receivedGames;
       });
