@@ -1,0 +1,17 @@
+<div class="card">
+  <img [src]="game.img_url" [alt]="game.name" />
+  <div class="container">
+    <h1>
+      <b>{{ game.name }}</b>
+    </h1>
+    <p>Developed by: {{ game.developer }}</p>
+    <p>{{ game.categories }}</p>
+
+    <div class="button-price-container">
+      <span>
+        <b>{{ game.price }}</b>
+      </span>
+      <button>Add to cart</button>
+    </div>
+  </div>
+</div>
