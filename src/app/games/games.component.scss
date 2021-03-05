@@ -1,6 +1,24 @@
 .games-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
-  width: 1180px;
+  max-width: 1180px;
+  margin-top: 10px;
+}
+
+@media(min-width: 325px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(min-width: 768px) {
+  .games-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(min-width: 1200px) {
+  .games-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

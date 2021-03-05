@@ -1,8 +1,7 @@
-@import '../shared/utils/variables';
-@import '../shared/utils/_fonts';
+@import "../shared/utils/variables";
+@import "../shared/utils/_fonts";
 
 .footer {
-  overflow: hidden;
   background-color: #f1f1f1;
   padding: 20px 10px;
 
@@ -10,8 +9,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1180px;
     margin: 0 auto;
+    max-width: 1180px;
   }
 
   a {
