@@ -1,4 +1,4 @@
-import { Game } from './../../shared/game.model';
+import { Game } from '../../shared/models/game.model';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -11,7 +11,5 @@ export class GameComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.game);
-  }
+  ngOnInit(): void {}
 }
