@@ -1,6 +1,15 @@
-.main {
-  max-width: 1200px;
-  margin: 20px auto;
+.container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  width: 1180px;
+  margin: 70px auto 20px auto;
+
+}
+
+.footer {
+  margin: auto 0 0 0;
 }

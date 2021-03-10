@@ -1,33 +1,41 @@
+@import '../shared/utils/variables';
+@import '../shared/utils/_fonts';
+
 .header {
-  overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 20px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  padding: 6px 12px;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1180px;
+    margin: 0 auto;
+  }
   
   a {
-    color: black;
+    color: $main-color;
     text-align: center;
     padding: 12px;
+    letter-spacing: 2px;
     text-decoration: none;
-    font-size: 18px;
+    font-family: $main-font;
+    text-transform: uppercase;
+    font-size: 14px;
     line-height: 25px;
     border-radius: 4px;
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-    }
-
     &:hover {
-      background-color: #ddd;
-      color: black;
+      color: $hover-color;
     }
+  }
 
-    .active {
-      background-color: dodgerblue;
-      color: white;
-    }
+  .logo {
+    font-size: 40px;
+    font-family: $logo-font;
+    font-weight: bold;
   }
 }
