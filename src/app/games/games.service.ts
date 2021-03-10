@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class GamesService {
   public clickedCategory = new Subject<string>();
+  public clickedSelectOption = new Subject<string>();
 
   constructor(private http: HttpClient) {}
 
@@ -22,7 +23,15 @@ export class GamesService {
     return this.http.get(`/api/games/category/${category}`);
   }
 
+  sortGamesByPrice(expensiveness: string) {
+    return this.http.get(`/api/games/sort?from=${expensiveness}`);
+  }
+
   onCategoryClicked(categoryName: string) {
     this.clickedCategory.next(categoryName);
+  }
+
+  onSelectOptionClicked(option: string) {
+    this.clickedSelectOption.next(option)
   }
 }
