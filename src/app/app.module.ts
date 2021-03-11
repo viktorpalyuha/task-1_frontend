@@ -14,7 +14,7 @@ import { PillsComponent } from './shared/pills/pills.component';
 import { PillComponent } from './shared/pills/pill/pill.component';
 import { SelectComponent } from './shared/select/select.component';
 import { SortComponent } from './games/sort/sort.component';
-import { StatisticsComponent } from './games/statistics/statistics.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +30,8 @@ import { StatisticsComponent } from './games/statistics/statistics.component';
     SortComponent,
     StatisticsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
