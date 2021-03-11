@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GamesService } from './games.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Game } from '../shared/models/game.model';
+import { Game } from '../shared/models/games/game.model';
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',

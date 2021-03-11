@@ -1,0 +1,43 @@
+@import "../shared/utils/fonts";
+
+.stats-container {
+  margin-top: 40px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+tr{
+  &:nth-of-type(odd) {
+    background-color: #88b7b7;
+  }
+}
+td {
+  color: black;
+  padding: 10px 0px;
+}
+
+th {
+  padding: 0px 15px;
+  height: 40px;
+  background-color: #0c0f0a;
+  vertical-align: middle;
+  font-family: $secondary-font;
+  font-size: 18px;
+  color: white;
+}
+
+.price-stats,
+.category-stats {
+  h1 {
+    font-family: $secondary-font;
+    font-weight: bold;
+    font-size: 2em;
+  }
+}
+
+.price-stats {
+  margin-top: 40px;
+}
