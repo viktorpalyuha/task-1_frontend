@@ -14,6 +14,7 @@ import { PillsComponent } from './shared/pills/pills.component';
 import { PillComponent } from './shared/pills/pill/pill.component';
 import { SelectComponent } from './shared/select/select.component';
 import { SortComponent } from './games/sort/sort.component';
+import { StatisticsComponent } from './games/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SortComponent } from './games/sort/sort.component';
     PillComponent,
     SelectComponent,
     SortComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,
