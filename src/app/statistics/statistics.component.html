@@ -1,1 +1,45 @@
-<p>statistics works!</p>
+<section class="stats-container">
+  <div class="category-stats">
+    <h1>Category Statistics</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Amount of games by category</th>
+          <th>Average price</th>
+          <th>Highest price</th>
+          <th>Lowest price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categoryStats">
+          <td>{{ category.category }}</td>
+          <td>{{ category.numberOfGames }}</td>
+          <td>{{ category.avgPrice }}</td>
+          <td>{{ category.highestPrice }}</td>
+          <td>{{ category.lowestPrice }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="price-stats">
+    <h1>Price Statistics</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Total average price</th>
+          <th>Number of games in $1-100 range</th>
+          <th>Number of games in $100-200 range</th>
+          <th>Number of games in $200-300 range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td *ngFor="let price of priceStats">
+            {{ price?.avgPrice || price?.numberOfGames || 0 }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

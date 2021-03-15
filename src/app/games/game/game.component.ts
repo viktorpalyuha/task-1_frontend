@@ -1,4 +1,4 @@
-import { Game } from '../../shared/models/game.model';
+import { Game } from '../../shared/models/games/game.model';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

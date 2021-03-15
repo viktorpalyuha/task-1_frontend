@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
+import { Game } from '../shared/models/games/game.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,27 +12,27 @@ export class GamesService {
 
   constructor(private http: HttpClient) {}
 
-  getGames() {
-    return this.http.get('/api/games');
+  getGames(): Observable<Game[]> {
+    return this.http.get<Game[]>('/api/games');
   }
 
-  getGamesByName(name: string) {
-    return this.http.get(`/api/games/search/${name}`);
+  getGamesByName(name: string): Observable<Game[]> {
+    return this.http.get<Game[]>(`/api/games/search/${name}`);
   }
 
-  getGamesByCategory(category: string) {
-    return this.http.get(`/api/games/category/${category}`);
+  getGamesByCategory(category: string): Observable<Game[]> {
+    return this.http.get<Game[]>(`/api/games/category/${category}`);
   }
 
-  sortGamesByPrice(expensiveness: string) {
-    return this.http.get(`/api/games/sort?from=${expensiveness}`);
+  sortGamesByPrice(expensiveness: string): Observable<Game[]> {
+    return this.http.get<Game[]>(`/api/games/sort?from=${expensiveness}`);
   }
 
-  onCategoryClicked(categoryName: string) {
+  onCategoryClicked(categoryName: string): void {
     this.clickedCategory.next(categoryName);
   }
 
-  onSelectOptionClicked(option: string) {
-    this.clickedSelectOption.next(option)
+  onSelectOptionClicked(option: string): void {
+    this.clickedSelectOption.next(option);
   }
 }
