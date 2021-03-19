@@ -10,7 +10,7 @@ import { StatisticsService } from './statistics.service';
   styleUrls: ['./statistics.component.scss'],
 })
 export class StatisticsComponent implements OnInit {
-  categories = ['Single', 'Online', 'Co-op', 'PvP', 'Multiplayer'];
+  categories = ['Single-player', 'Online', 'Co-op', 'PvP', 'Multiplayer'];
   priceRanges = [0, 100, 200];
 
   categoryStats: CategoryStats[] = [];
