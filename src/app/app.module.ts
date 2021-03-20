@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -15,6 +16,7 @@ import { PillComponent } from './shared/pills/pill/pill.component';
 import { SelectComponent } from './shared/select/select.component';
 import { SortComponent } from './games/sort/sort.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,15 @@ import { StatisticsComponent } from './statistics/statistics.component';
     SelectComponent,
     SortComponent,
     StatisticsComponent,
+    FormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
