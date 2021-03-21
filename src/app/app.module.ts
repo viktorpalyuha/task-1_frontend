@@ -16,7 +16,8 @@ import { PillComponent } from './shared/pills/pill/pill.component';
 import { SelectComponent } from './shared/select/select.component';
 import { SortComponent } from './games/sort/sort.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-import { FormComponent } from './form/form.component';
+import { FormComponent } from './auth/form/form.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { FormComponent } from './form/form.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{provide: JWT_OPTIONS, useValue: JWT_OPTIONS}, JwtHelperService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
