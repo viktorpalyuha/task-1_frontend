@@ -15,11 +15,16 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    request = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${localStorage.getItem('JWT_token')}`,
-      },
-    });
+    const token = localStorage.getItem('JWT_token');
+    if (token) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } else {
+      request = request.clone();
+    }
 
     return next.handle(request);
   }
