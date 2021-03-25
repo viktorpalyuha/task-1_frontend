@@ -58,10 +58,17 @@ export class FormComponent implements OnInit {
           this.authService.setToken(response);
           this.route.navigate(['games']);
         });
-    } else if(this.formData.valid && this.buttonText === 'Sign up') {
-      this.authService.register(this.formData.value).subscribe(_ => {
+    } else if (this.formData.valid && this.buttonText === 'Sign up') {
+      this.authService.register(this.formData.value).subscribe((_) => {
         this.route.navigate(['login']);
-      })
+      });
     }
+  }
+
+  onFacebookLogin() {
+    this.authService.fbLogin().then((jwt: Token) => {
+      this.authService.setToken(jwt);
+      this.route.navigate(['games']);
+    });
   }
 }

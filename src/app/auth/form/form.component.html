@@ -61,6 +61,9 @@
       Please, enter a valid password!
     </span>
   </div>
-  <p>or sign in with <span class="facebook-auth">Facebook</span></p>
+  <p>
+    or sign in with
+    <a class="facebook-auth" (click)="onFacebookLogin()">Facebook</a>
+  </p>
   <button type="submit">{{ buttonText }}</button>
 </form>
