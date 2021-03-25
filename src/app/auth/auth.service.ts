@@ -35,7 +35,8 @@ export class AuthService {
                 if (response.JWT_token) {
                   resolve(response);
                 }
-              });
+              })
+              .catch(() => reject(new Error('No token found')));
           }
         },
         { scope: 'public_profile, email' }
