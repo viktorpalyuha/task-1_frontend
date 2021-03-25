@@ -19,7 +19,6 @@ import { SortComponent } from './games/sort/sort.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { FormComponent } from './auth/form/form.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { FacebookModule } from 'ngx-facebook';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,6 @@ import { FacebookModule } from 'ngx-facebook';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FacebookModule.forRoot()
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
