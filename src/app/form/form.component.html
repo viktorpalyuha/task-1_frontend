@@ -1,0 +1,66 @@
+<form class="form" [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <h1>{{ formHeader }}</h1>
+  <div class="form-control-container" *ngIf="registration">
+    <div class="form-control">
+      <input
+        type="text"
+        id="fullname"
+        class="form-input"
+        autocomplete="off"
+        placeholder=" "
+        formControlName="fullName"
+      />
+      <label for="fullname"> Full Name </label>
+    </div>
+    <span
+      class="invalid-data"
+      *ngIf="
+        !formData.get('fullName').valid && formData.get('fullName').touched
+      "
+    >
+      Please, enter a valid Full Name!
+    </span>
+  </div>
+  <div class="form-control-container">
+    <div class="form-control">
+      <input
+        type="email"
+        id="email"
+        class="form-input"
+        autocomplete="off"
+        placeholder=" "
+        formControlName="email"
+      />
+      <label for="email"> Email </label>
+    </div>
+    <span
+      class="invalid-data"
+      *ngIf="!formData.get('email').valid && formData.get('email').touched"
+    >
+      Please, enter a valid email!
+    </span>
+  </div>
+  <div class="form-control-container">
+    <div class="form-control">
+      <input
+        type="password"
+        id="password"
+        class="form-input"
+        autocomplete="off"
+        placeholder=" "
+        formControlName="password"
+      />
+      <label for="password"> Password </label>
+    </div>
+    <span
+      class="invalid-data"
+      *ngIf="
+        !formData.get('password').valid && formData.get('password').touched
+      "
+    >
+      Please, enter a valid password!
+    </span>
+  </div>
+  <p>or sign in with <span class="facebook-auth">Facebook</span></p>
+  <button type="submit">{{ buttonText }}</button>
+</form>
