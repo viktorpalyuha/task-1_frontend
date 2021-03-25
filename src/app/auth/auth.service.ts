@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { FacebookService, InitParams } from 'ngx-facebook';
 import { Customer } from './../shared/models/auth/customer.interface';
 
 import { Token } from './../shared/models/auth/token.interface';
@@ -32,9 +31,10 @@ export class AuthService {
               })
               .toPromise()
               .then((response: Token) => {
-                if (response.JWT_token) {
-                  resolve(response);
+                if (!response.JWT_token) {
+                  throw Error;
                 }
+                return resolve(response);
               })
               .catch(() => reject(new Error('No token found')));
           }
