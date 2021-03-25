@@ -1,3 +1,5 @@
+import { Token } from './../../shared/models/auth/token.interface';
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,7 +21,7 @@ export class FormComponent implements OnInit {
   formHeader: string;
   buttonText: string;
 
-  constructor(private route: Router) {}
+  constructor(private route: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     if (this.route.url === '/register') {
@@ -45,11 +47,21 @@ export class FormComponent implements OnInit {
     return null;
   }
 
-  onSubmit(): void {
-    if (this.formData.valid) {
-      console.log('works');
-    } else {
-      console.log("doesn't work");
+  onSubmit() {
+    if (this.formData.valid && this.buttonText === 'Sign in') {
+      this.authService
+        .login(
+          this.formData.get('email').value,
+          this.formData.get('password').value
+        )
+        .subscribe((response: Token) => {
+          this.authService.setToken(response);
+          this.route.navigate(['games']);
+        });
+    } else if(this.formData.valid && this.buttonText === 'Sign up') {
+      this.authService.register(this.formData.value).subscribe(_ => {
+        this.route.navigate(['login']);
+      })
     }
   }
 }
