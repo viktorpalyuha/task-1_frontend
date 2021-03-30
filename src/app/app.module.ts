@@ -1,3 +1,4 @@
+import { socketIoConfig } from './socketIo.config';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +21,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { FormComponent } from './auth/form/form.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ChatComponent } from './chat/chat.component';
+import { SocketIoModule } from 'ngx-socket-io';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { ChatComponent } from './chat/chat.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    SocketIoModule.forRoot(socketIoConfig),
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
