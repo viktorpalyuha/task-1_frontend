@@ -58,12 +58,16 @@ export class AuthService {
     });
   }
 
+  getToken() {
+    return localStorage.getItem('JWT_token');
+  }
+
   setToken(authResult: Token): void {
     localStorage.setItem('JWT_token', authResult.JWT_token);
   }
 
   isAuthenticated(): boolean {
-    const token = localStorage.getItem('JWT_token');
+    const token = this.getToken();
 
     return !this.jwtHelper.isTokenExpired(token);
   }

@@ -1,11 +1,23 @@
+import { AuthService } from './../auth/auth.service';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
+import * as io from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChatService {
-  constructor(private socket: Socket) {
+  socket: SocketIOClient.Socket;
+
+  constructor(private authService: AuthService) {}
+
+  establishConnection() {
+    this.socket = io('http://localhost:3000', {
+      transports: ['websocket'],
+      query: {
+        authorization: this.authService.getToken(),
+      },
+    });
   }
 
   sendMessage(message: string): void {
@@ -13,6 +25,10 @@ export class ChatService {
   }
 
   receiveMessage() {
-    return this.socket.fromEvent('receivedMessage');
+    return new Observable((observer) => {
+      this.socket.on('receivedMessage', (message: string) => {
+        observer.next(message);
+      });
+    });
   }
 }
