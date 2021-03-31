@@ -26,7 +26,19 @@ export class ChatService {
 
   receiveMessage() {
     return new Observable((observer) => {
-      this.socket.on('receivedMessage', (message: string) => {
+      this.socket.on('receivedMessage', (message) => {
+        observer.next(message);
+      });
+    });
+  }
+
+  requestAllMessages() {
+    this.socket.emit('requestAllMessages');
+  }
+
+  getAllMessages() {
+    return new Observable((observer) => {
+      this.socket.on('sendAllMessages', (message) => {
         observer.next(message);
       });
     });

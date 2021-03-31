@@ -1,4 +1,11 @@
 export interface Message {
-  message: string;
-  full_name: string;
+  id: number;
+  content: string;
+  time: string;
+  author: {
+    id: number;
+    full_name: string;
+    environment: string;
+    email: string;
+  };
 }
