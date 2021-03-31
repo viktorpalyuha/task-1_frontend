@@ -11,12 +11,17 @@ export class ChatComponent implements OnInit {
   isChatShown = false;
   writtenMessage: string = '';
   messages: Message[] = [];
+  userFullName: string;
 
   constructor(private chatService: ChatService) {
     this.chatService.establishConnection();
   }
 
   ngOnInit(): void {
+    this.chatService.requestUserFullName();
+    this.chatService.getUserFullName().subscribe((fullName: string) => {
+      this.userFullName = fullName;
+    });
     this.chatService.requestAllMessages();
     this.chatService.getAllMessages().subscribe((message: Message[]) => {
       this.messages.push(...message);
