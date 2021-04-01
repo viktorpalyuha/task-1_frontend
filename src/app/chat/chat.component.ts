@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from './chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -7,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
   isChatShown = false;
+  writtenMessage: string = '';
+  messages: string[] = [];
 
-  constructor() {}
+  constructor(private chatService: ChatService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.chatService.receiveMessage().subscribe((message: string) => {
+      this.messages.push(message);
+    });
+  }
 
   showChat() {
     this.isChatShown = true;
@@ -18,5 +25,10 @@ export class ChatComponent implements OnInit {
 
   hideChat() {
     this.isChatShown = false;
+  }
+
+  sendMessage() {
+    this.chatService.sendMessage(this.writtenMessage);
+    this.writtenMessage = '';
   }
 }
