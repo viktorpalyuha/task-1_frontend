@@ -21,6 +21,7 @@
     "@angular/router": "~11.2.3",
     "@auth0/angular-jwt": "^5.0.2",
     "@types/facebook-js-sdk": "^3.3.2",
+    "font-awesome": "^4.7.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
