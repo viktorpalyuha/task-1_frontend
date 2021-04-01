@@ -19,6 +19,7 @@ import { SortComponent } from './games/sort/sort.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { FormComponent } from './auth/form/form.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     SortComponent,
     StatisticsComponent,
     FormComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
