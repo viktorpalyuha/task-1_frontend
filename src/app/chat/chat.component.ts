@@ -1,3 +1,4 @@
+import { Message } from './../shared/models/chat/message.model';
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from './chat.service';
 
@@ -9,12 +10,15 @@ import { ChatService } from './chat.service';
 export class ChatComponent implements OnInit {
   isChatShown = false;
   writtenMessage: string = '';
-  messages: string[] = [];
+  messages: Message[] = [];
 
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService) {
+    this.chatService.establishConnection();
+  }
 
   ngOnInit(): void {
-    this.chatService.receiveMessage().subscribe((message: string) => {
+    this.chatService.receiveMessage().subscribe((message: Message) => {
+      console.log(message);
       this.messages.push(message);
     });
   }
