@@ -44,4 +44,16 @@ export class ChatService {
       });
     });
   }
+
+  requestUserFullName() {
+    this.socket.emit('requestUserFullName');
+  }
+
+  getUserFullName() {
+    return new Observable((observer) => {
+      this.socket.on('sendUserFullName', (full_name: string) => {
+        observer.next(full_name);
+      });
+    });
+  }
 }

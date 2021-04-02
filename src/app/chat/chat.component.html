@@ -11,29 +11,24 @@
   </header>
 
   <main class="msger-chat">
-    <div class="msg left-msg" *ngFor="let message of messages">
+    <div
+      class="msg left-msg"
+      *ngFor="let message of messages"
+      [ngClass]="
+        message?.author?.full_name === userFullName ? 'left-msg' : 'right-msg'
+      "
+    >
       <div class="msg-bubble">
         <div class="msg-info">
           <div class="msg-info-name">{{ message?.author?.full_name }}</div>
           <div class="msg-info-time">
-            {{ message?.time | date:'MMM d, h:mm' }}
+            {{ message?.time | date: "MMM d, H:mm" }}
           </div>
         </div>
 
         <div class="msg-text">
           {{ message?.content }}
         </div>
-      </div>
-    </div>
-
-    <div class="msg right-msg">
-      <div class="msg-bubble">
-        <div class="msg-info">
-          <div class="msg-info-name">Test 2</div>
-          <div class="msg-info-time">12:46</div>
-        </div>
-
-        <div class="msg-text">dasdasdas</div>
       </div>
     </div>
   </main>
