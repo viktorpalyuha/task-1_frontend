@@ -14,12 +14,14 @@
     <div class="msg left-msg" *ngFor="let message of messages">
       <div class="msg-bubble">
         <div class="msg-info">
-          <div class="msg-info-name">{{message.full_name}}</div>
-          <div class="msg-info-time">12:45</div>
+          <div class="msg-info-name">{{ message?.author?.full_name }}</div>
+          <div class="msg-info-time">
+            {{ message?.time | date:'MMM d, h:mm' }}
+          </div>
         </div>
 
         <div class="msg-text">
-          {{ message.message }}
+          {{ message?.content }}
         </div>
       </div>
     </div>

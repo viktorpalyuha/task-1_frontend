@@ -1,3 +1,4 @@
+import { Message } from './../shared/models/chat/message.model';
 import { AuthService } from './../auth/auth.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -26,7 +27,19 @@ export class ChatService {
 
   receiveMessage() {
     return new Observable((observer) => {
-      this.socket.on('receivedMessage', (message: string) => {
+      this.socket.on('receivedMessage', (message: Message) => {
+        observer.next(message);
+      });
+    });
+  }
+
+  requestAllMessages() {
+    this.socket.emit('requestAllMessages');
+  }
+
+  getAllMessages() {
+    return new Observable((observer) => {
+      this.socket.on('sendAllMessages', (message: Message[]) => {
         observer.next(message);
       });
     });
