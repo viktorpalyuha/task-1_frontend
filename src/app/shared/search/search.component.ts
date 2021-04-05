@@ -13,10 +13,11 @@ export class SearchComponent implements OnInit {
 
   redirectToQuery(event: string) {
     if (!event) {
-      this.router.navigate(['/games']);
-    } else {
       this.router.navigate([], {
         relativeTo: this.activeRoute,
+      });
+    } else {
+      this.router.navigate(['games'], {
         queryParams: {
           name: event,
         },

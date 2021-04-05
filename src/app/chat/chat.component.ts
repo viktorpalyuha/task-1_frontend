@@ -40,7 +40,9 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage() {
-    this.chatService.sendMessage(this.writtenMessage);
+    if (this.writtenMessage.trim() && this.writtenMessage.trim().length <= 29) {
+      this.chatService.sendMessage(this.writtenMessage);
+    }
     this.writtenMessage = '';
   }
 }
