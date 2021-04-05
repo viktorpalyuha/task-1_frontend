@@ -39,6 +39,7 @@
       class="msger-input"
       placeholder="Enter your message..."
       [(ngModel)]="writtenMessage"
+      (keyup.enter)="sendMessage()"
       name="message"
     />
     <a type="submit" class="msger-send-btn">
